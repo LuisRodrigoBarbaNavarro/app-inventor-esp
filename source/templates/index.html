@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recargar automáticamente</title>
+    <script>
+        function enviarInstruccion() {
+            fetch('/LEDON')
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Instrucción enviada al ESP8266');
+                        location.reload();
+                    } else {
+                        console.error('Error al enviar la instrucción');
+                    }
+                })
+                .catch(error => console.error('Error de red:', error));
+            
+            fetch ('/LEDOFF')
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Instrucción enviada al ESP8266');
+                        location.reload();
+                    } else {
+                        console.error('Error al enviar la instrucción');
+                    }
+                })
+                .catch(error => console.error('Error de red:', error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Página para enviar instrucción al ESP8266</h1>
+    <button onclick="enviarInstruccion()">Enviar instrucción</button>
+</body>
+</html>
